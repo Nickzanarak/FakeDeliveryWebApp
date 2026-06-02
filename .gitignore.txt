@@ -1,0 +1,68 @@
+# ==========================================
+# 1. Angular / Node.js (.gitignore สำหรับฝั่ง Frontend)
+# ==========================================
+node_modules/
+.angular/
+.src/assets/environments/
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDEs and editors (สำหรับฝั่ง Frontend)
+.idea/
+.project
+.classpath
+.cproject
+.settings/
+
+# ==========================================
+# 2. .NET / C# (.gitignore สำหรับฝั่ง Backend)
+# ==========================================
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bbin/
+obj/
+bin/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.useruser
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Cache / Tooling
+.vs/
+Generated\ Files/
+Ankh. Lightfoot/
+
+# ==========================================
+# 3. ไฟล์การตั้งค่าที่อาจมีความลับ (Secrets / Environment)
+# ==========================================
+.env
+.env.local
+.env.*.local
+
+# ของ .NET (ถ้ามีไฟล์คอนฟิกที่มีรหัสผ่านฐานข้อมูล ห้ามเอาขึ้น)
+# appsettings.Development.json # (เปิดคอมเมนต์ออกหากต้องการซ่อนไฟล์นี้)
+
+# ==========================================
+# 4. OS Files (ไฟล์ขยะจากระบบปฏิบัติการ)
+# ==========================================
+.DS_Store
+Thumbs.db
