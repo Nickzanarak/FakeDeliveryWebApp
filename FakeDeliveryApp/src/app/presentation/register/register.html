@@ -1,0 +1,28 @@
+<div class="bg-[#2a2a2a] min-h-screen flex items-center justify-center">
+    <div class="bg-[#1a1a1a] rounded-2xl p-10 w-full max-w-md shadow-2xl">
+        <h2 class="text-white text-3xl font-bold text-center mb-8">สมัครสมาชิก</h2>
+
+        <div class="flex flex-col gap-4">
+            <input [(ngModel)]="username" type="text" placeholder="ชื่อผู้ใช้"
+                class="bg-[#3a3a3a] text-white px-4 py-3 rounded-lg border-none outline-none w-full" />
+            <input [(ngModel)]="name" type="text" placeholder="ชื่อ-นามสกุล"
+                class="bg-[#3a3a3a] text-white px-4 py-3 rounded-lg border-none outline-none w-full" />
+            <input [(ngModel)]="password" type="password" placeholder="รหัสผ่าน"
+                class="bg-[#3a3a3a] text-white px-4 py-3 rounded-lg border-none outline-none w-full" />
+            <input [(ngModel)]="confirmPassword" type="password" placeholder="ยืนยันรหัสผ่าน"
+                class="bg-[#3a3a3a] text-white px-4 py-3 rounded-lg border-none outline-none w-full" />
+
+            <p *ngIf="errorMessage" class="text-red-400 text-sm text-center">{{ errorMessage }}</p>
+
+            <button (click)="register()"
+                class="bg-[#f4a500] text-white py-3 rounded-lg font-bold text-lg cursor-pointer border-none hover:bg-orange-600 mt-2">
+                สมัครสมาชิก
+            </button>
+
+            <p class="text-gray-400 text-center text-sm">
+                มีบัญชีอยู่แล้ว?
+                <a routerLink="/login" class="text-[#f4a500] cursor-pointer">เข้าสู่ระบบ</a>
+            </p>
+        </div>
+    </div>
+</div>

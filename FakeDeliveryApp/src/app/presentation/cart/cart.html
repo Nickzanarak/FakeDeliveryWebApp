@@ -1,0 +1,51 @@
+<div class="bg-[#2a2a2a] min-h-screen p-8">
+    <h2 class="text-white text-2xl font-bold mb-6">รายการสินค้า</h2>
+
+    <div *ngIf="cartItems.length === 0" class="text-gray-400 text-center mt-20 text-xl">
+        ไม่มีสินค้าในตะกร้า
+    </div>
+
+    <div class="flex flex-col gap-4">
+        <div *ngFor="let item of cartItems"
+            class="bg-[#3a3a3a] rounded-xl p-4 flex items-center gap-4">
+            <img *ngIf="item.imageUrl" [src]="'http://localhost:5231' + item.imageUrl"
+                class="w-16 h-16 object-cover rounded-lg" />
+            <div *ngIf="!item.imageUrl"
+                class="w-16 h-16 bg-[#555] rounded-lg flex items-center justify-center text-gray-400">
+                🍽️
+            </div>
+
+            <div class="flex-1">
+                <p class="text-white font-bold">{{ item.productName }}</p>
+                <p class="text-[#f4a500]">{{ item.price }} บาท</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button (click)="decrease(item)"
+                    class="bg-[#555] text-white w-8 h-8 rounded-full border-none cursor-pointer font-bold hover:bg-[#666]">
+                    -
+                </button>
+                <span class="text-white font-bold">{{ item.quantity }}</span>
+                <button (click)="increase(item)"
+                    class="bg-[#555] text-white w-8 h-8 rounded-full border-none cursor-pointer font-bold hover:bg-[#666]">
+                    +
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="cartItems.length > 0" class="flex justify-end mt-4">
+        <p class="text-white text-xl font-bold">ทั้งหมด {{ totalPrice }} บาท</p>
+    </div>
+
+    <div class="flex justify-end mt-4 gap-3">
+        <button (click)="goBack()"
+            class="bg-[#555] text-white px-8 py-3 rounded-lg font-bold cursor-pointer border-none hover:bg-[#666]">
+            กลับ
+        </button>
+        <button *ngIf="cartItems.length > 0" (click)="checkout()"
+            class="bg-[#f4a500] text-white px-10 py-3 rounded-lg font-bold cursor-pointer border-none hover:bg-orange-600">
+            ชำระเงิน
+        </button>
+    </div>
+</div>

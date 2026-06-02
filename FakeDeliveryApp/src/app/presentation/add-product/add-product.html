@@ -1,0 +1,52 @@
+<div class="bg-[#2a2a2a] min-h-screen p-8 flex flex-col items-center">
+    <div class="w-full max-w-4xl">
+        <h2 class="text-white text-2xl font-bold mb-8">เพิ่มสินค้า</h2>
+
+        <div class="flex gap-8">
+            <!-- รูปสินค้า -->
+            <div class="flex flex-col items-center gap-4">
+                <div (click)="fileInput.click()"
+                    class="w-64 h-64 bg-[#1a1a1a] rounded-xl flex flex-col items-center justify-center cursor-pointer hover:bg-[#333]">
+                    <img *ngIf="previewUrl" [src]="previewUrl" class="w-full h-full object-cover rounded-xl" />
+                    <div *ngIf="!previewUrl" class="text-gray-400 text-center">
+                        <p class="text-4xl mb-2">📷</p>
+                        <p>รูปสินค้า</p>
+                    </div>
+                </div>
+                <input #fileInput type="file" accept="image/*" class="hidden" (change)="onFileSelected($event)" />
+            </div>
+
+            <!-- Form -->
+            <div class="flex-1 bg-[#3a3a3a] rounded-xl p-6 flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-400 text-sm">ชื่อสินค้า :</label>
+                    <input [(ngModel)]="name" type="text"
+                        class="bg-[#555] text-white px-4 py-2 rounded-lg border-none outline-none" />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-400 text-sm">คำอธิบาย :</label>
+                    <input [(ngModel)]="description" type="text"
+                        class="bg-[#555] text-white px-4 py-2 rounded-lg border-none outline-none" />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-400 text-sm">ราคา :</label>
+                    <input [(ngModel)]="price" type="number"
+                        class="bg-[#555] text-white px-4 py-2 rounded-lg border-none outline-none" />
+                </div>
+
+                <p *ngIf="errorMessage" class="text-red-400 text-sm">{{ errorMessage }}</p>
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-6">
+            <button (click)="goBack()"
+                class="bg-[#555] text-white px-8 py-3 rounded-lg font-bold cursor-pointer border-none hover:bg-[#666]">
+                กลับ
+            </button>
+            <button (click)="submit()"
+                class="bg-[#f4a500] text-white px-8 py-3 rounded-lg font-bold cursor-pointer border-none hover:bg-orange-600">
+                ทันบึก
+            </button>
+        </div>
+    </div>
+</div>

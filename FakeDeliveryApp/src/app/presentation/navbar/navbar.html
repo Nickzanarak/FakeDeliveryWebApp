@@ -1,0 +1,26 @@
+<nav class="flex justify-between items-center bg-[#1a1a1a] px-7 py-3 text-white">
+    <div class="text-2xl font-bold" routerLink="/products">
+        <span class="text-[#f4a500]">Fake</span>Delivery
+    </div>
+    <div class="flex items-center gap-4">
+        <a routerLink="/admin-users" *ngIf="isAdmin"
+            class="text-white no-underline hover:text-[#f4a500]">
+            จัดการผู้ใช้
+        </a>
+        <a routerLink="/cart" class="relative text-white text-2xl no-underline">
+            🛒
+            <span *ngIf="cartCount > 0"
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+                {{ cartCount }}
+            </span>
+        </a>
+        <button *ngIf="!isLoggedIn" (click)="goToLogin()"
+            class="bg-[#f4a500] text-white px-5 py-2 rounded-full font-bold cursor-pointer border-none">
+            เข้าสู่ระบบ
+        </button>
+        <button *ngIf="isLoggedIn" (click)="logout()"
+            class="bg-[#555] text-white px-5 py-2 rounded-full font-bold cursor-pointer border-none">
+            ออกจากระบบ
+        </button>
+    </div>
+</nav>

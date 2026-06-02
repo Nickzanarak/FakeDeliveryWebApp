@@ -1,0 +1,48 @@
+<div class="bg-[#2a2a2a] min-h-screen p-6">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6 gap-4">
+        
+        <!-- Search -->
+        <div class="flex-1 max-w-md">
+            <input [(ngModel)]="searchText" type="text" placeholder="ค้นหาสินค้า"
+                class="w-full bg-[#3a3a3a] text-white px-4 py-2 rounded-lg border-none outline-none placeholder-gray-400" />
+        </div>
+
+        <!-- Admin Buttons -->
+        <div class="flex gap-6" *ngIf="isAdmin">
+
+            <button (click)="goToManageProduct()"
+                class="bg-[#555] text-white px-5 py-2 rounded-lg font-bold cursor-pointer border-none hover:bg-[#666]">
+                จัดการสินค้า
+            </button>
+
+            <button (click)="goToAddProduct()"
+                class="bg-[#f4a500] text-white px-5 py-2 rounded-lg font-bold cursor-pointer border-none hover:bg-orange-600">
+                เพิ่มสินค้าใหม่
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div *ngFor="let product of filteredProducts"
+            class="bg-[#3a3a3a] rounded-xl p-4 shadow-lg flex flex-col gap-3">
+            <img *ngIf="product.imageUrl" [src]="'http://localhost:5231' + product.imageUrl"
+                class="w-full h-40 object-cover rounded-lg" />
+            <div *ngIf="!product.imageUrl"
+                class="w-full h-40 bg-[#555] rounded-lg flex items-center justify-center text-gray-400">
+                ไม่มีรูป
+            </div>
+            <h3 class="text-white font-bold text-lg">{{ product.name }}</h3>
+            <p class="text-gray-400 text-sm">{{ product.description }}</p>
+            <p class="text-[#f4a500] font-bold">{{ product.price }} บาท</p>
+            <button (click)="addToCart(product)"
+                class="bg-[#f4a500] text-white py-2 rounded-lg font-bold cursor-pointer border-none hover:bg-orange-600">
+                เพิ่มลงตะกร้า
+            </button>
+        </div>
+    </div>
+
+</div>
